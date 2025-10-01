@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwanda Zama - Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00ffff;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00cccc;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: #00ffff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2300ffff" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10px, 10px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ff00);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #00ffff, #00cccc);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+            background: linear-gradient(45deg, #00cccc, #00ffff);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00ffff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #00ffff, #00ff00);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #00ffff;
+        }
+
+        .about-text h3 {
+            color: #00ffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: #00ffff;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .skill-item h4 {
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Project Categories */
+        .project-categories {
+            margin-top: 2rem;
+        }
+
+        .project-category {
+            margin-bottom: 3rem;
+            background: rgba(26, 26, 46, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-header:hover {
+            background: rgba(0, 255, 255, 0.15);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin: 0;
+        }
+
+        .category-toggle {
+            font-size: 1.2rem;
+            color: #00ffff;
+            transition: transform 0.3s ease;
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category-content.expanded {
+            max-height: 2000px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #00ffff;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header:hover {
+            background: rgba(0, 255, 255, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: #00ffff;
+            margin: 0;
+        }
+
+        .project-toggle {
+            font-size: 1rem;
+            color: #00ffff;
+            transition: transform 0.3s ease;
+        }
+
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .project-details.expanded {
+            max-height: 800px;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-skills {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-skills h5 {
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .project-skills p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .project-tools {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tools h5 {
+            color: #ffaa00;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tool-tag {
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 170, 0, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #00ffff;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .project-link:hover {
+            background: #00ffff;
+            color: #000000;
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-item {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            border-color: #00ffff;
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .tool-item h4 {
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            border-color: #00ffff;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .cert-item h4 {
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cert-date {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+
+        .contact-item i {
+            color: #00ffff;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #00ffff;
+        }
+
+        .contact-form {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #ffffff;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #00ffff, #00cccc);
+            color: #000000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: #00ffff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffff;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #00ffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">KZ</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#profiles">Profiles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Kwanda Zama</h1>
+            <p class="tagline">Cybersecurity Analyst & GRC Analyst</p>
+            <p class="description">
+                Passionate cybersecurity professional specializing in threat analysis, network defense, 
+                cloud security, and comprehensive GRC frameworks. Dedicated to protecting digital assets 
+                and ensuring regulatory compliance in the evolving threat landscape.
+            </p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="profile-pic">KZ</div>
+            </div>
+            <div class="about-text">
+                <h3>Cybersecurity & GRC Professional</h3>
+                <p>
+                    I am a dedicated cybersecurity analyst with extensive training in network defense, 
+                    threat hunting, cloud security, and comprehensive GRC frameworks. My expertise spans 
+                    across multiple domains including SOC analysis, penetration testing, AWS security 
+                    implementations, and regulatory compliance.
+                </p>
+                <p>
+                    With certifications from ISC2, Cisco Networking Academy, and AWS, combined with 
+                    practical experience in developing GRC frameworks for FinTech organizations, I bring 
+                    a comprehensive understanding of modern cybersecurity challenges and regulatory 
+                    requirements. I am passionate about continuous learning and staying updated with 
+                    the latest security trends and compliance standards.
+                </p>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>SOC Analysis</h4>
+                        <p>Security monitoring and incident response</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Network Defense</h4>
+                        <p>Firewall management and intrusion detection</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Cloud Security</h4>
+                        <p>AWS security services and best practices</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Threat Hunting</h4>
+                        <p>Proactive threat detection and analysis</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>GRC Frameworks</h4>
+                        <p>ISO 27001, ISO 27005, POPIA compliance</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Risk Management</h4>
+                        <p>Risk assessment and treatment strategies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects & Portfolio</h2>
+        
+        <div class="project-categories">
+            <!-- GRC Projects Category -->
+            <article class="project-category">
+                <header class="category-header" onclick="toggleCategory('grc-category')">
+                    <h3 class="category-title">🛡️ Governance, Risk & Compliance (GRC) Projects</h3>
+                    <span class="category-toggle" id="grc-toggle">▼</span>
+                </header>
+                <div class="category-content" id="grc-category">
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('grc-project-1')">
+                                <h4 class="project-title">Ubuntu GRC Framework for SecurePay</h4>
+                                <span class="project-toggle" id="grc-project-1-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="grc-project-1">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Developed a comprehensive Governance, Risk & Compliance (GRC) framework for SecurePay, 
+                                        a fictional FinTech startup. This project demonstrates practical expertise in risk management, 
+                                        policy development, and regulatory compliance, addressing ISO 27001, ISO 27005, and POPIA requirements.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>GRC framework development, risk assessment (ISO 27005), policy development (ISO 27001, POPIA), 
+                                        regulatory compliance, dashboard prototyping, strategic planning.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">ISO 27001</span>
+                                            <span class="tool-tag">ISO 27005</span>
+                                            <span class="tool-tag">POPIA</span>
+                                            <span class="tool-tag">GRC Dashboarding</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">View Framework</a>
+                                        <a href="#" class="project-link">Risk Register</a>
+                                        <a href="#" class="project-link">Policies</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('grc-project-2')">
+                                <h4 class="project-title">FinTech & Digital Currency GRC Analyst Project</h4>
+                                <span class="project-toggle" id="grc-project-2-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="grc-project-2">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Focused on the unique GRC challenges within the FinTech and digital currency sectors, 
+                                        including regulatory landscapes, data privacy, and security controls specific to financial technologies.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>FinTech regulatory analysis, digital currency compliance, data privacy regulations, 
+                                        financial risk management, blockchain security principles.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">SARB Regulations</span>
+                                            <span class="tool-tag">FICA</span>
+                                            <span class="tool-tag">Blockchain</span>
+                                            <span class="tool-tag">Data Privacy Frameworks</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Analysis Report</a>
+                                        <a href="#" class="project-link">Compliance Matrix</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('grc-project-3')">
+                                <h4 class="project-title">Business Continuity & Disaster Recovery (BCDR) GRC Project</h4>
+                                <span class="project-toggle" id="grc-project-3-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="grc-project-3">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Developed and implemented GRC strategies specifically for Business Continuity and Disaster Recovery planning, 
+                                        ensuring organizational resilience against disruptions.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>BCDR planning, risk assessment for business continuity, disaster recovery strategy, 
+                                        regulatory compliance for resilience, incident response planning.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">ISO 22301</span>
+                                            <span class="tool-tag">Risk Management Tools</span>
+                                            <span class="tool-tag">BCDR Frameworks</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">BCDR Plan</a>
+                                        <a href="#" class="project-link">Risk Assessment</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Offensive Security Category -->
+            <article class="project-category">
+                <header class="category-header" onclick="toggleCategory('offensive-category')">
+                    <h3 class="category-title">🔴 Offensive Security / Penetration Testing</h3>
+                    <span class="category-toggle" id="offensive-toggle">▼</span>
+                </header>
+                <div class="category-content" id="offensive-category">
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('offensive-project-1')">
+                                <h4 class="project-title">Web Penetration Test: Afro House Application</h4>
+                                <span class="project-toggle" id="offensive-project-1-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="offensive-project-1">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Conducted a comprehensive penetration test on an 'Afro House' web application to identify vulnerabilities, 
+                                        assess security posture, and provide actionable recommendations for remediation.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Web application penetration testing, vulnerability identification (OWASP Top 10), 
+                                        exploitation techniques, reporting, ethical hacking.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Burp Suite</span>
+                                            <span class="tool-tag">OWASP ZAP</span>
+                                            <span class="tool-tag">Nmap</span>
+                                            <span class="tool-tag">Metasploit</span>
+                                            <span class="tool-tag">Kali Linux</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Penetration Test Report</a>
+                                        <a href="#" class="project-link">Vulnerability Assessment</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('offensive-project-2')">
+                                <h4 class="project-title">UbuntuCypher Penetration Testing Package v2</h4>
+                                <span class="project-toggle" id="offensive-project-2-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="offensive-project-2">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Developed and utilized a custom penetration testing package (version 2) for various systems, 
+                                        focusing on automated and manual vulnerability assessments and exploitation.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Custom tool development, automated vulnerability scanning, manual exploitation, 
+                                        scripting (Python/Bash), security auditing.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Python</span>
+                                            <span class="tool-tag">Bash</span>
+                                            <span class="tool-tag">Nmap</span>
+                                            <span class="tool-tag">Custom Scripts</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">GitHub Repository</a>
+                                        <a href="#" class="project-link">Documentation</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('offensive-project-3')">
+                                <h4 class="project-title">Nmap Vulnerability Assessment Project</h4>
+                                <span class="project-toggle" id="offensive-project-3-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="offensive-project-3">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Performed detailed network reconnaissance and vulnerability assessments using Nmap to identify 
+                                        open ports, services, operating systems, and potential security weaknesses on target systems.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Network scanning, port enumeration, service version detection, OS fingerprinting, 
+                                        vulnerability identification, Nmap scripting engine (NSE).</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Nmap</span>
+                                            <span class="tool-tag">NSE Scripts</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Scan Results</a>
+                                        <a href="#" class="project-link">Analysis Report</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Defensive Security Category -->
+            <article class="project-category">
+                <header class="category-header" onclick="toggleCategory('defensive-category')">
+                    <h3 class="category-title">🔵 Defensive Security / Threat Detection</h3>
+                    <span class="category-toggle" id="defensive-toggle">▼</span>
+                </header>
+                <div class="category-content" id="defensive-category">
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('defensive-project-1')">
+                                <h4 class="project-title">Honeypot Implementation and Analysis</h4>
+                                <span class="project-toggle" id="defensive-project-1-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="defensive-project-1">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Deployed and monitored a honeypot to attract, log, and study attacks on a simulated system, 
+                                        gaining insights into real emerging threats and attacker methodologies.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Threat detection and intelligence, malware analysis, intrusion detection, 
+                                        incident triage and investigation, honeypot deployment and management.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Cowrie</span>
+                                            <span class="tool-tag">Dionaea</span>
+                                            <span class="tool-tag">SIEM Tools</span>
+                                            <span class="tool-tag">Log Analysis</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Threat Analysis</a>
+                                        <a href="#" class="project-link">Attack Patterns</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('defensive-project-2')">
+                                <h4 class="project-title">Phishing Detector Project</h4>
+                                <span class="project-toggle" id="defensive-project-2-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="defensive-project-2">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Developed a system to detect and flag phishing attempts, utilizing various techniques to analyze 
+                                        email headers, content, and URLs for suspicious indicators.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Phishing detection techniques, email analysis, URL analysis, machine learning for security, 
+                                        threat intelligence integration.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Python</span>
+                                            <span class="tool-tag">Email Parsing</span>
+                                            <span class="tool-tag">URL Analysis</span>
+                                            <span class="tool-tag">Machine Learning</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Detection Engine</a>
+                                        <a href="#" class="project-link">Analysis Results</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Network Security Category -->
+            <article class="project-category">
+                <header class="category-header" onclick="toggleCategory('network-category')">
+                    <h3 class="category-title">🌐 Network Security</h3>
+                    <span class="category-toggle" id="network-toggle">▼</span>
+                </header>
+                <div class="category-content" id="network-category">
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('network-project-1')">
+                                <h4 class="project-title">Cisco Packet Tracer Network Labs</h4>
+                                <span class="project-toggle" id="network-project-1-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="network-project-1">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Designed, configured, and troubleshooted various network topologies using Cisco Packet Tracer, 
+                                        focusing on routing, switching, and network security configurations.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Network design, router/switch configuration, VLANs, ACLs, static/dynamic routing, 
+                                        network troubleshooting, network security principles.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Cisco Packet Tracer</span>
+                                            <span class="tool-tag">Cisco IOS</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Lab Configurations</a>
+                                        <a href="#" class="project-link">Network Diagrams</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('network-project-2')">
+                                <h4 class="project-title">Data Encryption Implementation</h4>
+                                <span class="project-toggle" id="network-project-2-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="network-project-2">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Implemented and demonstrated various data encryption techniques to secure sensitive information, 
+                                        covering symmetric and asymmetric encryption, and hashing.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Cryptography principles, encryption algorithms (AES, RSA), hashing functions (SHA), 
+                                        secure communication protocols (SSL/TLS), key management.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">OpenSSL</span>
+                                            <span class="tool-tag">Python Cryptography</span>
+                                            <span class="tool-tag">AES</span>
+                                            <span class="tool-tag">RSA</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Implementation Guide</a>
+                                        <a href="#" class="project-link">Code Examples</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Job Simulations Category -->
+            <article class="project-category">
+                <header class="category-header" onclick="toggleCategory('simulations-category')">
+                    <h3 class="category-title">💼 Professional Job Simulations</h3>
+                    <span class="category-toggle" id="simulations-toggle">▼</span>
+                </header>
+                <div class="category-content" id="simulations-category">
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('simulation-project-1')">
+                                <h4 class="project-title">Deloitte Australia Cyber Job Simulation</h4>
+                                <span class="project-toggle" id="simulation-project-1-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="simulation-project-1">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Completed a job simulation involving reading web activity logs, supporting a client in a cyber security breach, 
+                                        and identifying suspicious user activity.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Web activity log analysis, incident response, client communication, threat identification, security operations.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Log Analysis Tools</span>
+                                            <span class="tool-tag">SIEM Concepts</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Simulation Certificate</a>
+                                        <a href="#" class="project-link">Case Study</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('simulation-project-2')">
+                                <h4 class="project-title">Datacom Cybersecurity Job Simulation</h4>
+                                <span class="project-toggle" id="simulation-project-2-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="simulation-project-2">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Investigated a cyberattack, produced a comprehensive report documenting findings, outlined key recommendations 
+                                        to improve a client's cybersecurity posture, and conducted a comprehensive risk assessment.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Cyberattack investigation, security reporting, risk assessment, cybersecurity posture improvement, client advisory.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Incident Response Playbooks</span>
+                                            <span class="tool-tag">Risk Assessment Frameworks</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Investigation Report</a>
+                                        <a href="#" class="project-link">Risk Assessment</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('simulation-project-3')">
+                                <h4 class="project-title">Mastercard Cybersecurity Virtual Experience Program</h4>
+                                <span class="project-toggle" id="simulation-project-3-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="simulation-project-3">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Served as an analyst on Mastercard's Security Awareness Team, identifying and reporting security threats such as phishing, 
+                                        analyzing business areas needing robust security training, and implementing training procedures.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Security awareness training, phishing threat identification, security policy development, business analysis for security, communication.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">Security Awareness Platforms</span>
+                                            <span class="tool-tag">Phishing Simulation Tools</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Training Program</a>
+                                        <a href="#" class="project-link">Threat Analysis</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-header" onclick="toggleProject('simulation-project-4')">
+                                <h4 class="project-title">DLA Piper Global Cyber with Data Privacy Job Simulation</h4>
+                                <span class="project-toggle" id="simulation-project-4-toggle">▼</span>
+                            </header>
+                            <details class="project-details" id="simulation-project-4">
+                                <div class="project-content">
+                                    <p class="project-description">
+                                        Analyzed complex data breach scenarios to provide legal advice on GDPR compliance, regulatory notification requirements, 
+                                        and ransom payment risks. Crafted a compliant and strategic media statement.
+                                    </p>
+                                    <div class="project-skills">
+                                        <h5>Skills Gained:</h5>
+                                        <p>Data privacy (GDPR), regulatory compliance, legal advisory, incident communication, crisis management, media relations.</p>
+                                    </div>
+                                    <div class="project-tools">
+                                        <h5>Tools/Technologies Used:</h5>
+                                        <div class="tools-list">
+                                            <span class="tool-tag">GDPR Framework</span>
+                                            <span class="tool-tag">Legal Research Tools</span>
+                                            <span class="tool-tag">Communication Strategy</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Legal Analysis</a>
+                                        <a href="#" class="project-link">Media Statement</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </article>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Skills/Tools Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-item">
+                <div class="tool-icon">🔍</div>
+                <h4>Wireshark</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">📊</div>
+                <h4>Splunk</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🐍</div>
+                <h4>Python</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🐧</div>
+                <h4>Kali Linux</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">☁️</div>
+                <h4>AWS Security</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🛡️</div>
+                <h4>Nessus</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🔒</div>
+                <h4>Burp Suite</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🌐</div>
+                <h4>Nmap</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">📡</div>
+                <h4>Metasploit</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">🔧</div>
+                <h4>SIEM Tools</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">⚖️</div>
+                <h4>ISO 27001</h4>
+            </div>
+            <div class="tool-item">
+                <div class="tool-icon">📋</div>
+                <h4>GRC Frameworks</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="cert-item">
+                <h4>CC Certified in Cybersecurity (ISC2)</h4>
+                <p class="cert-date">January 30, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Introduction to CISSP Security Assessment & Testing</h4>
+                <p class="cert-date">January 29, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Introduction to Cybersecurity (Cisco)</h4>
+                <p class="cert-date">March 3, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Network Defense (Cisco Networking Academy)</h4>
+                <p class="cert-date">March 12, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Data and Tools for Defense Analysts</h4>
+                <p class="cert-date">March 15, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>AWS Shared Responsibility Model</h4>
+                <p class="cert-date">March 2, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Protecting Your Instance with Security Groups</h4>
+                <p class="cert-date">March 3, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Authentication and Authorization with AWS IAM</h4>
+                <p class="cert-date">March 3, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Security Learning Plan</h4>
+                <p class="cert-date">March 3, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Introduction to ITIL® V4</h4>
+                <p class="cert-date">April 11, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>AWS Billing and Cost Management</h4>
+                <p class="cert-date">March 3, 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Getting Started with Amazon OpenSearch Service</h4>
+                <p class="cert-date">March 10, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <i>📧</i>
+                    <a href="mailto:kwandazama01@gmail.com">kwandazama01@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i>💼</i>
+                    <a href="https://linkedin.com/in/kwandazama" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <i>🐙</i>
+                    <a href="https://github.com/kwandazama" target="_blank">GitHub Profile</a>
+                </div>
+                <div class="contact-item">
+                    <i>🌍</i>
+                    <span>Available for remote opportunities</span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/kwandazama" target="_blank">💼</a>
+            <a href="https://github.com/kwandazama" target="_blank">🐙</a>
+            <a href="mailto:kwandazama01@gmail.com">📧</a>
+            <a href="https://ubuntucypher.blogspot.com/" target="_blank">✍️</a>
+        </div>
+        <p>&copy; 2025 Kwanda Zama. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Category toggle functionality
+        function toggleCategory(categoryId) {
+            const categoryContent = document.getElementById(categoryId);
+            const toggleIcon = document.getElementById(categoryId.replace('-category', '-toggle'));
+            
+            if (categoryContent.classList.contains('expanded')) {
+                categoryContent.classList.remove('expanded');
+                toggleIcon.textContent = '▼';
+            } else {
+                categoryContent.classList.add('expanded');
+                toggleIcon.textContent = '▲';
+            }
+        }
+
+        // Project toggle functionality
+        function toggleProject(projectId) {
+            const projectDetails = document.getElementById(projectId);
+            const toggleIcon = document.getElementById(projectId + '-toggle');
+            
+            if (projectDetails.classList.contains('expanded')) {
+                projectDetails.classList.remove('expanded');
+                toggleIcon.textContent = '▼';
+            } else {
+                projectDetails.classList.add('expanded');
+                toggleIcon.textContent = '▲';
+            }
+        }
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and sections
+        document.querySelectorAll('.project-card, .tool-item, .cert-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
+
+
+            <div class="cert-item">
+                <h4>Foundations of Cyber Risk Management and FAIRTM, CYBERCRIMES AND POPI ACT UPDATE (SA Legal Academy)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Mobile Application Security (Secure Academy)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Effective Leadership (HP Foundation)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Cybersecurity for Businesses (EC-Council)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>SQL Injection Attack (EC-Council)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>Data and Tools for Defense Analysts (Splunk)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+            <div class="cert-item">
+                <h4>API Security Fundamentals (APISEC University)</h4>
+                <p class="cert-date">September 2025</p>
+            </div>
+
+
+
+    <!-- Profiles Section -->
+    <section id="profiles">
+        <h2 class="section-title">Cybersecurity Learning Platforms & Blog</h2>
+        <p class="description" style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto; color: #cccccc;">
+            Active participation in hands-on cybersecurity challenges and knowledge sharing.
+            Continuously developing practical skills through various cybersecurity platforms and sharing insights through technical blogging.
+            These platforms provide hands-on experience with real-world security scenarios and challenges.
+        </p>
+        <div class="profiles-grid">
+ <div class="profile-item">
+                <img src="/home/ubuntu/images/thm_logo.png" alt="TryHackMe Logo" class="profile-icon-img">
+                <h4>TryHackMe</h4>
+                <p>Interactive cybersecurity learning platform with hands-on challenges covering penetration testing, digital forensics, and defensive security. Completing rooms and earning badges to demonstrate practical skills.</p>
+                <div class="tools-list">
+                    <span class="tool-tag">Penetration Testing</span>
+                    <span class="tool-tag">Digital Forensics</span>
+                    <span class="tool-tag">Defensive Security</span>
+                </div>
+                <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4432413" style=\'border:none; width: 100%; height: 200px;\'></iframe>
+                <a href="https://tryhackme.com/p/4432413" target="_blank" class="profile-link">View Profile</a>
+            </div>
+            <div class="profile-item">
+                <img src="/home/ubuntu/images/htb_logo.png" alt="Hack The Box Logo" class="profile-icon-img">
+                <h4>Hack The Box</h4>
+                <p>Advanced penetration testing platform featuring realistic vulnerable machines and challenges. Developing offensive security skills through hands-on exploitation of various systems and network configurations.</p>
+                <div class="tools-list">
+                    <span class="tool-tag">Penetration Testing</span>
+                    <span class="tool-tag">Red Team</span>
+                </div>
+                <a href="https://app.hackthebox.com/profile/2276173" target="_blank" class="profile-link">View Profile</a>
+            </div>
+<div class="profile-item">
+                <img src="/home/ubuntu/images/btlo_logo.png" alt="Blue Team Labs Online Logo" class="profile-icon-img">
+                <h4>Blue Team Labs Online</h4>
+                <p>Defensive cybersecurity platform focusing on incident response, digital forensics, and threat hunting. Practicing blue team skills through realistic security incident scenarios and investigations.</p>
+                <div class="tools-list">
+                    <span class="tool-tag">Incident Response</span>
+                    <span class="tool-tag">Digital Forensics</span>
+                </div>
+                <a href="https://blueteamlabs.online/public/user/81be29571bed0347a8392c" target="_blank" class="profile-link">View Profile</a>
+            </div>
+            <div class="profile-item">
+                <img src="/home/ubuntu/images/labex_logo.png" alt="LabEx Logo" class="profile-icon-img">
+                <h4>LabEx</h4>
+                <p>Hands-on programming and cybersecurity lab platform providing interactive learning experiences. Building technical skills through practical exercises and real-world scenarios in a controlled lab environment.</p>
+                <div class="tools-list">
+                    <span class="tool-tag">Hands-on Labs</span>
+                    <span class="tool-tag">Programming</span>
+                </div>
+                <a href="https://labex.io/users/kwanda-zama-97032378" target="_blank" class="profile-link">View Profile</a>
+            </div>
+<div class="profile-item">
+                <img src="/home/ubuntu/images/blog_icon.png" alt="Ubuntu Cypher Blog Icon" class="profile-icon-img">
+                <h4>Ubuntu Cypher Blog</h4>
+                <p>Technical cybersecurity blog sharing insights, tutorials, and analysis on various security topics. Covering practical cybersecurity techniques, tool reviews, and industry trends to help the cybersecurity community learn and grow.</p>
+                <div class="tools-list">
+                    <span class="tool-tag">Technical Writing</span>
+                    <span class="tool-tag">Knowledge Sharing</span>
+                    <span class="tool-tag">Tutorials</span>
+                </div>
+                <a href="https://ubuntucypher.blogspot.com/" target="_blank" class="profile-link">Read Blog</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+        /* Profiles Section */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .profile-item {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .profile-item:hover {
+            border-color: #00ffff;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .profile-item h4 {
+            color: #00ffff;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .profile-item p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #00ffff;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .profile-link:hover {
+            background: #00ffff;
+            color: #000000;
+        }
+
+
+
+
+        .profile-icon-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .profile-item .tools-list {
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-item .tool-tag {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .profile-item .tools-list {
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-item .tool-tag {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+
+
+
+        .profile-icon-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+
