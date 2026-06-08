@@ -1,0 +1,49 @@
+Audit Report JSON Schema
+ {
+ }
+  "scan_time": "2025-09-20T12:34:56Z",
+  "host": {
+    "hostname": "WIN-TEST",
+    "os": "Windows 10",
+    "ip_addresses": ["192.168.56.101"]
+  },
+  "summary": {
+    "total_processes": 123,
+    "suspicious_items": 3,
+    "risk_score": 47
+  },
+  "processes": [
+    {
+      "pid": 1234,
+      "name": "example.exe",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\example.exe",
+      "signed": false,
+      "signer": null,
+      "start_time": "2025-09-20T10:00:00Z",
+      "connections": [
+        {"remote_ip":"93.184.216.34","remote_port":443,"protocol":"TCP"}
+      ],
+      "indicators": ["unsigned","runs_from_temp","network_connection"]
+    }
+  ],
+  "drivers": [
+    {
+      "name": "exampledrv.sys",
+      "path": "C:\\Windows\\System32\\drivers\\exampledrv.sys",
+      "signed": false,
+      "signer": null,
+      "loaded_time": "2025-09-20T10:02:00Z",
+      "indicators": ["unsigned_driver"]
+    }
+  ],
+  "autoruns": [
+    {
+      "type": "registry_run_key",
+      "location": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "name": "UpdaterService",
+      "value": "C:\\Users\\Admin\\AppData\\Local\\Temp\\bad.exe",
+      "created_time": "2025-09-20T10:01:00Z",
+      "indicators": ["run_from_temp"]
+    }
+  ],
+  "notes": ["Run on isolated VM only. All detections are heuristic; manual review recommended."]
