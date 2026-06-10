@@ -1,0 +1,5 @@
+PROJECT OVERVIEW 
+This Labs provieds a hands on demonstraction of secure netwrok setup,routing, and firewall configuration.
+it highlight the importance of network segmentation, security enforcement, 
+and troubleshooting and making it strong
+

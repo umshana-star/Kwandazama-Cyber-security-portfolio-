@@ -1,0 +1,33 @@
+ INTRODUCTION
+This report represens the design, configuration
+and analysis of a Small Office/Home Office(SOHO) network simulated
+using Cisco Packet Trace. The network consists of multiple PCs,Swicth, a router and internet
+connectivity via a cloud demostrate network connectivity, IP addressing and basic security settings
+
+NETWORK TOPOLOGY
+Router: Connects the local network to the internet
+Switch : Connet all the PCs in the local network
+PCs : End devices for network testing
+Clouds/ISP : Represents internet connection
+
+CONFIGURATION
+Router
+Assign IP to  interfaces configure to DHCP
+
+Switch 
+Basic VLAN setup if required
+
+PCs 
+Set IP addressess manually or vai DHCP
+
+FIREWALL/BASIC SECURITY
+Configured mention port restriction or ACLs
+
+TESTING AND FINDINGS
+Ping test: Check connectivity between PCa and router
+Internet Access: Test connectivity to the clouds/ISP
+Network Perfomance: All device are connected corretly on IP adressesing is correct
+
+CONCLUSION
+The SOHO metwork was succesfully configure, demostracting basicconnectivity btween devices and internet access
+this project reienforces the important of proper IP addresssing, routing, and testing in small office network

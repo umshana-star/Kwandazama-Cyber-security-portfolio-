@@ -1,0 +1,32 @@
+ASA Firewall Configuration Report
+
+Introduction 
+This project involved configuration a Cisco ASA firewall
+with basic security settings to protect an internal LAN 
+while allowing controlled access to external networks.
+
+NETWORK TOPOLOGY
+1 ASA postioned betweeen internal LAN and external WAN.
+2 Device used:ASA Firewall,Router,PCs.
+
+CONFIGURATION STEPS
+1 Set hostname and domain name.
+2 Configured inside and outside inerfaaces with secuirty levels.
+3 Applied NAT for insides-to-outsides communicatio.
+4 Added ACLs to restrict unauthorized traffic
+5 Configured routing (default route to outside)
+
+TESTING
+Ping from inside - outside = Success
+Ping from outside - inside = Blocked 
+NAT confirmed working
+ACLs blocked unwanted
+
+FINDINGS
+ASA firewall correctly separeted internal and extranal network
+NAT allowed inside users internal access
+ACLs succesfull blocked unathorised access attempts
+
+CONCLUSION
+The Cisco ASA firewall was succefully configured with basic settins. The network is now more secure, 
+with maintaining controlled connectivity to external resources

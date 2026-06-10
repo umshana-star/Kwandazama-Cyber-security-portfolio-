@@ -1,0 +1,16 @@
+Spanning Tree Protocol
+Spanning Tree Protocol (STP) was succesfully implemented in a small LAN topology 
+consisting of three PCs and Three interconnected switches. The network demonstracted
+how stp prevents Layer 2 loops by electing a rooting bridge and placiing redumdamt a loop free logical
+topology while maintaining redundancy
+
+connectivty between all PC was verified through successfull pins proving that STP allowed stable communication
+withouth broadcast stroms or network instabuity. this lab highlighted the preventation and switch 
+secuiry in enterprise network
+
+network achieved
+Loops free switching operation
+Reducany for failover if an active link goes down
+Improved network stability and reliability
+
+

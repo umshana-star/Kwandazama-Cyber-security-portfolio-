@@ -1,0 +1,50 @@
+INTRODUCTION
+This report represens the design, configuration
+and analysis of a Meduim Enterprises network simulated
+using Cisco Packet Trace. The network consists of multiple LANs connected via router
+with intergrated secuirty and sever services the main object is to demostrate routing
+switching VLAN segmentation and firewall implementation
+
+NETWORK TOPOLOGY
+Router: Interconnect multiple LANs and handle routing between VLANs for segments
+Switch : Connet end devices(PCs and Server) and implement VLANs for segmemnts
+ASA Firewall : Controls tarffic between internal LANs and the simulated internet enforcing security policies
+PCs : Act as clients accessing network resources
+Server : Provides essentail services(DHCP,DNS,WEB) to client
+
+CONFIGURATION
+Router
+Configured with static routing protocols(OSPF/EIGRP)
+Internet assign IP addressing per subnet
+Default gateway for connected LANs
+
+Switch 
+VLAN confiruged for network segmentation
+STP enabled to prevent loops 
+Trunk ports configured between switching and routing
+
+SERVER
+IP address assigned within a subnet
+Services enabled: DHCP,DNS,HTTP(as per lab requied)
+
+ASA FIREWALL
+Security policies configured to filter traffic
+NAT/PAT enabled if required
+Monitores and logs incoming and outgoing traffic
+
+PCs 
+Configured wiht stastic or DHCP IP addresses
+Default gateway points to router interface for external communication
+
+TESTING AND FINDINGS
+Ping test: Ensured connectivity between PCs,Server, and Router
+Tracerouter: Verified routing paths between LANs
+Firewall Checking : Verified ASA blocks/permits tarffic according to configured rules
+
+CONCLUSION
+The network demonstrates a fuctional Medium Enterprises
+Proper VLAN segmentation
+Inter-routing-connectivity and routing
+Server services accessible to clients
+ASA firewall securing traffic
+STP maintaining loop-free toplogy
